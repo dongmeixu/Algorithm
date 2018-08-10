@@ -12,13 +12,15 @@
 如果 S1+S2 < S2+S1，那么应该把 S1 排在前面，否则应该把 S2 排在前面。
 """
 
+"""python3没通过"""
+
 # -*- coding:utf-8 -*-
 class Solution:
     def compare(self, x, y):
         if x >= y:
-            return x
+            return x - y, 1
         else:
-            return y
+            return y - x, -1
 
     def PrintMinNumber(self, numbers):
         # write code here
@@ -27,7 +29,11 @@ class Solution:
 
         numbers = [str(num) for num in numbers]
         # print(numbers)
-        numbers = sorted(numbers, key=lambda x, y: x + y if x + y > y + x else y + x)
+        # py3引入模块实现cmp
+        from functools import cmp_to_key
+        cmp2key = cmp_to_key(lambda x, y: int(x + y) - int(y + x))
+
+        numbers = sorted(numbers, key=cmp2key)
         return "".join(numbers).lstrip('0') or '0'
 
 

@@ -4,6 +4,7 @@
 用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
 """
 
+
 # -*- coding:utf-8 -*-
 class Solution:
     def __init__(self):
@@ -25,7 +26,7 @@ class Solution:
         elif not self.stackA:
             return None
         else:
-            while self.stackA: # B为空，将A的所有元素均进栈
+            while self.stackA:  # B为空，将A的所有元素均进栈
                 self.stackB.append(self.stackA.pop())
             return self.stackB.pop()
 
@@ -51,4 +52,6 @@ def sortAges(arr):
             arr[index] = i
             index += 1
     print(arr)
-sortAges([1, 2, 2, 3,2])
+
+
+sortAges([1, 2, 2, 3, 2])

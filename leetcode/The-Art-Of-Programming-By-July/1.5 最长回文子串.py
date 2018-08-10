@@ -16,7 +16,7 @@ class Solution:
         print(T)
 
         n = len(T)
-        p = [0] * n
+        p = [0] * (2 * n - 1)
 
         C = 0
         R = 0

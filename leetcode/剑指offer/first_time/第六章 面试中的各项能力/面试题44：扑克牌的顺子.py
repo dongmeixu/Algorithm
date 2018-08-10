@@ -30,7 +30,6 @@ class Solution:
             numberOfGap += numbers[big] - numbers[small] - 1
             small = big
             big += 1
-        print(numberOfZero, numberOfGap)
         return False if numberOfGap > numberOfZero else True
 
 

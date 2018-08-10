@@ -2,7 +2,7 @@
 题目描述
 统计一个数字在排序数组中出现的次数。
 """
-
+"""二分查找----查找第一个k,查找最后一个k"""
 
 # -*- coding:utf-8 -*-
 class Solution:
@@ -57,5 +57,5 @@ class Solution:
         return self.GetLastK(data, length, k, start, end)
 
 
-arr = [3,3,3,3,4,5]
+arr = [3, 3, 3, 3, 4, 5]
 print(Solution().GetNumberOfK(arr, 3))

@@ -42,6 +42,6 @@ class Solution:
         return ret
 
 
-# arr = [6, -3, -2, 7, -15, 1, 2, 2]
-arr = [1, -2, 3, 10, -4, 7, 2, -5]
+arr = [6, -3, -2, 7, -15, 1, 2, 2]
+# arr = [1, -2, 3, 10, -4, 7, 2, -5]
 print(Solution().FindGreatestSumOfSubArray(arr))

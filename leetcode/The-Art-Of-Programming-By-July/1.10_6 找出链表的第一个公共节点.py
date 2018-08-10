@@ -1,14 +1,14 @@
 """
-3、编程判断俩个链表是否相交
- 给出俩个单向链表的头指针，比如h1，h2，判断这俩个链表是否相交。
- 为了简化问题，我们假设俩个链表均不带环。
 
- 问题扩展： 如果链表可能有环列? 如果需要求出俩个链表相交的第一个节点列?
+6、找出链表的第一个公共结点
+两个单向链表，找出它们的第一个公共结点。
+
 """
+
 class Solution:
     def isCircle(self, list1, list2):
         if not list1 or not list2:
-            return False
+            return -1
 
         # 遍历获取链表长度
         len_A = 0
@@ -39,6 +39,6 @@ class Solution:
 
         while p1 and p2:
             if p1.next == p2.next:
-                return True
-        return False
+                return p1
+        return -1
 
