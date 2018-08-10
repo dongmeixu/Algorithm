@@ -1,0 +1,24 @@
+---------------------------
+第三章 数组中的问题其实最常见
+    - 排序：选择排序、插入排序、归并排序、快速排序
+    - 查找：二分查找
+    - 数据结构：栈、队列、堆
+
+如何写出正确的程序？
+    1.明确变量的含义
+    2.循环不变量
+    3.小数据量调试
+    4.大数据量测试
+
+
+面试问题实战
+    283 Move Zeros
+    27 Remove Element
+    26 Remove Duplicated from Sorted Array
+
+
+基础算法思路的应用
+    75 Sort Colors
+    88 Merge Sorted Array
+    215 Kth Largest Element in an Arrays
+    167 Two Sum II-Input array is sorted
