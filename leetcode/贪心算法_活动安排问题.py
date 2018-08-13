@@ -42,21 +42,30 @@ class Solution:
         pre = 0
         idx.append(0)
         for i in range(1, len(activities)):
-            if activities[i][1] >= activities[pre][0]:  # 下一个活动的开始时间大于等于上一个活动的结束时间
+            if activities[i][0] >= activities[pre][1]:  # 下一个活动的开始时间大于等于上一个活动的结束时间
                 res[i] = True
                 pre = i
                 idx.append(i)
-        print(idx)
-        return res
+        # print(idx)
+        c = 0
+        for i in range(len(res)):
+            if res[i]:
+                c += 1
+        return c, res
 
 
 if __name__ == '__main__':
     activities = []
     N = int(sys.stdin.readline().strip())  # 活动个数
-    while N:
-        line = sys.stdin.readline().strip()
-        start, end = line.split()
-        activities.append([int(start), int(end)])
+    M = int(sys.stdin.readline().strip())
+
+    line = sys.stdin.readline().strip().split()
+    start = [i for i in line if i & 1 == 0]
+    end = [i for i in line if i & 1 == 1]
+
+    i = 0
+    while len(start):
+        activities.append([int(start[i]), int(end)])
         N -= 1
 
     print(Solution().activityArrange(activities))
