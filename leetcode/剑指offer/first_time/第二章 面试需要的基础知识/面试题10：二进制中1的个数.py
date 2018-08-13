@@ -3,7 +3,6 @@
     输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。
 """
 
-
 """
 分析：
     1. 基本思路：先判断整数二进制表示中最右边一位是不是1.
@@ -29,6 +28,8 @@
     我们可以分为两步解决这个问题：第一步求这两个数的异或，第二步统计异或结果中1的位数
     
 """
+
+
 class Solution:
     # 1.判断n是不是负数，若是，求补
     # 2.将除去1之外的字符串用空代替，统计长度即可
@@ -60,3 +61,7 @@ class Solution:
             n = (n - 1) & n
         return count
 
+
+print(Solution().NumberOf1(5))
+# print(Solution().NumberOf1_2(5))
+# print(Solution().NumberOf1_3(5))

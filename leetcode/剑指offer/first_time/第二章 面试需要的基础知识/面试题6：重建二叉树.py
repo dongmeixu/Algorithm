@@ -25,6 +25,7 @@ class Solution:
         startInorder = 0
         endInorder = len(tin) - 1
 
+        # 返回根节点
         return self.reConstructBinaryTreeMain(pre, startPreorder, endPreorder, tin, startInorder, endInorder)
 
     # 根据前序遍历序列的第一个数字创建根节点，接下来在中序遍历序列中找到根节点的位置，
@@ -58,7 +59,6 @@ class Solution:
             root.right = self.reConstructBinaryTreeMain(pre, leftPreorderEnd + 1, endPreorder, tin, rootInorder + 1,
                                                         endInorder)
 
-        # print(root.val)
         return root
 
 

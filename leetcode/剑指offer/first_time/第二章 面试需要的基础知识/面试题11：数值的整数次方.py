@@ -38,4 +38,4 @@ class Solution:
         return result
 
 
-print(Solution().Power_1(2, -4))
+print(Solution().Power_1(2, -3))

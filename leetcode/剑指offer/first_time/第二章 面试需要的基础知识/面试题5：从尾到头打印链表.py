@@ -29,7 +29,6 @@ class Solution:
             listNode = listNode.next
 
         result.reverse()
-        print(result)
         return result
 
     def printListFromTailToHead_digui(self, listNode):
@@ -43,13 +42,11 @@ class Solution:
             result.extend(self.printListFromTailToHead(p.next))
         result.extend([p.val])
 
-        print(result)
         return result
 
 
 if __name__ == '__main__':
     input = list(map(int, input().split()))
-    print(input)
     p = phead = ListNode(input[0])
     for i in input[1:]:
         p.next = ListNode(i)
