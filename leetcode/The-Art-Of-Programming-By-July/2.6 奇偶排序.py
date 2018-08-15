@@ -10,6 +10,7 @@
 
 # 基于快排
 class Solution:
+    # 可能有问题！ 按照这种思路排序之后的元素相对位置发生了改变
     def OddEvenSort(self, arr):
         if not arr:
             return
@@ -28,5 +29,20 @@ class Solution:
                 arr[right] = tmp
         return arr
 
+    # 再创建个数组
+    def OddEvenSort_1(self, arr):
+        if not arr:
+            return
 
-print(Solution().OddEvenSort([1, 2, 3, 4]))
+        new_arr = []
+        for tmp in arr:
+            if tmp & 1 == 1:
+                new_arr.append(tmp)
+        for tmp in arr:
+            if tmp & 1 == 0:
+                new_arr.append(tmp)
+        return new_arr
+
+
+print(Solution().OddEvenSort([1, 2, 3, 4, 5, 6]))
+print(Solution().OddEvenSort_1([1, 2, 3, 4, 5, 6]))

@@ -44,17 +44,20 @@ class Solution:
     #
     #     return current
 
+    # 当n为偶数的时候，最后都是1活下来
     def LastRemaining_Solution(self, n, m):
         # 递推公式，由于编号是从0开始的，那么我们可以令
         # f[1] = 0； // 当一个人的时候，出队人员编号为0
         # f[n] = (f[n - 1] + m) % n // m表示每次数到该数的人出列，n表示当前序列的总人数
         # 而我们只需要得到第n次出列的结果即可，那么不需要另外声明数组保存数据，只需要直接一个for循环求得n阶约瑟夫环问题的结果即可
         # 由于往往现实生活中编号是从1 - n，那么我们把最后的结果加1即可。
-        res = [0] * n
-        for i in range(1, n):
-            res[i] = (res[i - 1] + m) % n
-        print(res)
-        return res[n - 1] + 1
+
+        if n == 0:
+            return -1
+        res = 0
+        for i in range(2, n + 1):
+            res = (res + m) % i
+        return res
 
 
-print(Solution().LastRemaining_Solution(5, 2))
+print(Solution().LastRemaining_Solution(5, 3))

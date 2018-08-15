@@ -20,7 +20,7 @@ class Solution:
                 numberOfZero += 1
 
         # 3.统计数组中的间隔数目
-        small = numberOfZero
+        small = numberOfZero  # 代表数组中第一个非0元素的下标
         big = small + 1
         while big < len(numbers):
             # 两个数相等，有对子，不可能是顺子
