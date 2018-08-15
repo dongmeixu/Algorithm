@@ -62,6 +62,7 @@ class Solution:
 
         return ret
 
+
 print(Solution().sovle([-2.5, 4, 0, 3, 0.5, 8, -1]))
 print(Solution().sovle_1([-2.5, 4, 0, 3, 0.5, 8, -1]))
 print(Solution().FindGreatestSumOfSubArray([-2.5, 4, 0, 3, 0.5, 8, -1]))
