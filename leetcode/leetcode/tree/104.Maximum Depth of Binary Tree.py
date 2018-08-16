@@ -1,6 +1,7 @@
 """
 求一棵二叉树的最高深度，从根节点到叶子节点的最长路径长度
 """
+"""已通过leetcode"""
 class TreeNode:
     def __init__(self, x):
         self.val = x
