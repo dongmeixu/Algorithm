@@ -50,3 +50,5 @@ plt.scatter(X[:, 0], X[:, 1], c=y_pred)
 plt.show()
 score = calinski_harabaz_score(X, y_pred)
 print(score)
+from sklearn.svm import OneClassSVM
+OneClassSVM.
