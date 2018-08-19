@@ -24,17 +24,17 @@ class Solution:
         return self.res
 
     def dfs(self, root, sum, temp):
-        sum -= root.val
+        if not root:
+            return
+
         temp.append(root.val)
 
-        if sum == 0 and not root.left and not root.right:
-            self.res.append(temp[:])
-        else:
-            if root.left:
-                self.dfs(root.left, sum, temp)
-            if root.right:
-                self.dfs(root.right, sum, temp)
-        temp.pop(-1)
+        if not root.left and not root.right: # left
+            if sum == root.val:
+                self.res.append(temp[:])
+        self.dfs(root.left, sum - root.val, temp)
+        self.dfs(root.right, sum - root.val, temp)
+        temp.pop()
 
     # def pathSum(self, root, sum):
     #     if not root:
@@ -58,7 +58,7 @@ h = root = TreeNode(1)
 left1 = h.left = TreeNode(2)
 right1 = h.right = TreeNode(0)
 left1.left = TreeNode(4)
-left1.right = TreeNode(4)
+left1.right = TreeNode(5)
 right1.left = TreeNode(6)
 right1.right = TreeNode(7)
 print(Solution().pathSum(root, 7))

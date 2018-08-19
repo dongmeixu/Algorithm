@@ -23,7 +23,7 @@ The above output corresponds to the 5 unique BST's shown below:
 
 """
 
-
+# 已通过
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -39,25 +39,26 @@ class Solution:
         """
 
         if n == 0:
-            return self.generate(1, 0, [])
+            return []
 
-        return self.generate(1, n, [])
+        return self.generate(1, n, {})
 
     def generate(self, start, end, res):
         if start > end:
-            return TreeNode(None)
+            return [None]
+        # 记忆化搜索
+        if (start, end) in res:
+            return res[(start, end)]
 
+        res[(start, end)] = []
         for i in range(start, end + 1):
-            leftSubs = self.generate(start, i - 1, res)
-            rightSubs = self.generate(i + 1, end, res)
-            print(leftSubs, rightSubs)
-            for left in leftSubs:
-                for right in rightSubs:
+            for left in self.generate(start, i - 1, res):
+                for right in self.generate(i + 1, end, res):
                     node = TreeNode(i)
                     node.left = left
                     node.right = right
-                    res.append(node)
-        return res
+                    res[(start, end)].append(node)
+        return res[(start, end)]
 
 
 print(Solution().generateTrees(2))

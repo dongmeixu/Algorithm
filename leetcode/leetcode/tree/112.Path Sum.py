@@ -22,9 +22,4 @@ class Solution:
             return root.val == sum
 
         # 递归结构
-        if self.hasPathSum(root.left, sum - root.val):
-            return True
-        if self.hasPathSum(root.right, sum - root.val):
-            return True
-
-        return False
+        return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)

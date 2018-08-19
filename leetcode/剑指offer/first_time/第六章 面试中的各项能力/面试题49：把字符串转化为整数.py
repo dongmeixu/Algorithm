@@ -29,4 +29,4 @@ class Solution:
         return sign * res
 
 
-print(Solution().StrToInt("-123n"))
+print(Solution().StrToInt("+123555555555555555"))
