@@ -1,6 +1,11 @@
-# TODO:没有考虑字符串如果含有非数字元素怎么办
+import sys
+
+
 class Solution:
     def StrToInt(self, s):
+        INT_MAX = sys.maxsize
+        INT_MIN = -INT_MAX - 1
+
         # 字符串为空
         # s = list(s)
         if not s:
@@ -23,10 +28,16 @@ class Solution:
             return 0
 
         while i < len(s):
+            # 5.溢出
+            if res > INT_MAX / 10 or (res == INT_MAX / 10 and (int(str[i])) > INT_MAX % 10):
+                if sign == -1:
+                    return INT_MIN
+                else:
+                    return INT_MAX
             res = res * 10 + int(s[i])
             i += 1
 
         return sign * res
 
 
-print(Solution().StrToInt("+123555555555555555"))
+print(Solution().StrToInt("+1235555555555555550989"))

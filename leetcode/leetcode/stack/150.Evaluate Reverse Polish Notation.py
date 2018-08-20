@@ -6,6 +6,7 @@ Some examples:
 ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
 """
 
+# PASS
 # 时间复杂度O（n）,空间复杂度O（logn）
 class Solution:
     def evalRPN(self, tokens):
@@ -40,7 +41,7 @@ class Solution:
                         print("除零溢出")
                     stack.append(digit1 / digit2)
 
-        return stack[0]
+        return int(stack[0])
 
 
 # tokens = ["2", "1", "+", "3", "*"]

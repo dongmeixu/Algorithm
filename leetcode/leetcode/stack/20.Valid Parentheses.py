@@ -3,9 +3,10 @@
 判定字符串中的括号匹配是否合法
 """
 
-
+# PASS
 class Solution:
     def isValid(self, s):
+        # 字符串为空
         if not s:
             return True
 

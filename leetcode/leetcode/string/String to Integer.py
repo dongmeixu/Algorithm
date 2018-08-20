@@ -4,42 +4,40 @@ import sys
 class Solution:
     def strToInt(self, s):
         INT_MAX = sys.maxsize
-        INT_MIN = - INT_MAX - 1
+        INT_MIN = -INT_MAX - 1
 
-        num = 0
-        # 1. 字符串为空，默认为0
+        # 字符串为空
+        # s = list(s)
         if not s:
             return 0
 
-        # 2.符号位
+        # 用于保存最后的结果
+        res = 0
+        # 符号位,默认是正数
         sign = 1
 
-        # 3.去除空格
-        i = 0
-        while s[i] == " " and i < len(s):
+        i = 0  # i用来代表第一个数字所在的位置
+        # 判断字符串的最高位是否是符号位，是的话看下是正数还是负数
+        if s[i] == "-":
+            sign = -1
+            i += 1  # 第一个数字位
+        elif s[i] == "+":
             i += 1
 
-        if s[i] == "+":
-            i += 1
-        else:
-            assert s[i] == "-"
-            sign = -1
-            i += 1
+        if not s[i:].isdigit():
+            return 0
 
         while i < len(s):
-            # 4.非数字
-            if s[i] < "0" or s[i] > "9":
-                break
             # 5.溢出
-            if num > INT_MAX / 10 or (num == INT_MAX / 10 and (int(str[i])) > INT_MAX % 10):
+            if res > INT_MAX / 10 or (res == INT_MAX / 10 and (int(str[i])) > INT_MAX % 10):
                 if sign == -1:
                     return INT_MIN
                 else:
                     return INT_MAX
+            res = res * 10 + int(s[i])
+            i += 1
 
-            num = num * 10 + int(str[i])
-
-        return num * sign
+        return sign * res
 
 
-print("+13672242400000000000000000000000000")
+print(Solution().strToInt("+1235555555555555550989"))
