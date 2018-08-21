@@ -11,68 +11,51 @@
 
 
 class Solution():
-    def sove(self, A, B):
+    def sove(self, A, m, B, n):
         # A, B是两个排序好的数组
-        lenA = len(A)
-        lenB = len(B)
+        if not A:
+            return B
+        if not B:
+            return A
 
-        newLength = lenA + lenB
+        newLength = m + n
         # print(newLength)
 
         indexOfCombine = newLength - 1
-        indexOfA = lenA - 1
-        indexOfB = lenB - 1
+        indexOfA = m - 1
+        indexOfB = n - 1
 
-        newArray = [0] * newLength
-        # print(len(newArray))
-        while indexOfCombine > 0:
-            # if A[indexOfA] <= B[0]:
-            #     newArray[:indexOfA] = A
-            #     newArray[indexOfA + 1:] = B
-            #     break
-            # if A[indexOfA] >= B[0]:
-            #     newArray[:indexOfB] = B
-            #     newArray[indexOfB + 1:] = A
-            #     break
-            if A[indexOfA] < B[indexOfB]:
-
-                newArray[indexOfCombine] = B[indexOfB]
-                indexOfCombine -= 1
-                indexOfB -= 1
-                if indexOfB < 0:
-                    newArray[: indexOfA + 1] = A[: indexOfA + 1]
-                    break
+        while indexOfA >= 0 and indexOfB >= 0:
             if A[indexOfA] > B[indexOfB]:
-                newArray[indexOfCombine] = A[indexOfA]
+                A[indexOfCombine] = A[indexOfA]
                 indexOfCombine -= 1
                 indexOfA -= 1
-                # if indexOfA > 0:
-                #     indexOfA -= 1
-            if A[indexOfA] == B[indexOfB]:
-                newArray[indexOfCombine] = A[indexOfA]
+            elif A[indexOfA] < B[indexOfB]:
+                A[indexOfCombine] = B[indexOfB]
                 indexOfCombine -= 1
-                newArray[indexOfCombine] = B[indexOfB]
-                indexOfCombine -= 1
+                indexOfB -= 1
+            else:
+                A[indexOfCombine] = A[indexOfA]
+                A[indexOfCombine - 1] = B[indexOfB]
+                indexOfCombine -= 2
                 indexOfA -= 1
                 indexOfB -= 1
-                # if indexOfB > 0:
-                #     indexOfB -= 1
-                # if indexOfA > 0:
-                #     indexOfA -= 1
 
-            # if indexOfB == 0:
-            #     newArray[: indexOfCombine] = A[: indexOfA]
-        # if abs(indexOfA) - abs(indexOfB) == 1:
-        #     newArray[0] = B[0]
-        # elif abs(indexOfA) - abs(indexOfB) == -1:
-        #     newArray[0] = A[0]
-        # print(indexOfA, indexOfB, indexOfCombine)
-        print(newArray)
-        return newArray
+        while indexOfA >= 0:
+            A[indexOfCombine] = A[indexOfA]
+            indexOfCombine -= 1
+            indexOfA -= 1
+
+        while indexOfB >= 0:
+            A[indexOfCombine] = B[indexOfB]
+            indexOfCombine -= 1
+            indexOfB -= 1
+
+        return A
 
 
-a = [1, 3, 4, 5, 6]
+a = [1, 3, 4, 5, 6, 0, 0, 0, 0]
 b = [6, 7, 9, 10]
 # a = [1, 3, 4, 5, 8]
 # b = [6, 7, 9, 10]
-Solution().sove(a, b)
+print(Solution().sove(a, 5, b, 4))
