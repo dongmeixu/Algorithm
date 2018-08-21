@@ -26,7 +26,6 @@ class Solution:
         for s in rightS:
             res.append(str(root.val) + "->" + s)
 
-        print(res)
         return res
 
 
@@ -38,4 +37,4 @@ left1.right = TreeNode(5)
 right1.left = TreeNode(6)
 right1.right = TreeNode(7)
 
-Solution().binaryTreePaths(root)
+print(Solution().binaryTreePaths(root))

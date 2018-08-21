@@ -58,17 +58,26 @@ class Solution:
 """
 3. 对撞指针（设置两个指针）
 """
-class Solution:
+
+
+class Solution_1:
     def twoSum(self, numbers, target):
         if not numbers:
             return -1
         left = 0
-        right = len(numbers)
+        right = len(numbers) - 1
 
         while left <= right:
             if numbers[left] + numbers[right] == target:
-                r
+                return left + 1, right + 1
+            elif numbers[left] + numbers[right] > target:
+                right -= 1
+            else:
+                left += 1
+        return -1
+
 
 numbers = [2, 7, 11, 15]
 target = 9
 print(Solution().twoSum(numbers, target))
+print(Solution_1().twoSum(numbers, target))

@@ -3,6 +3,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def addTwoNumbers(self, l1, l2):
         """
@@ -24,6 +25,7 @@ class Solution:
             carry, val = divmod(carry, 10)
             n.next = n = ListNode(val)
         return result.next
+
 
 l1 = ListNode(2)
 l1.next = ListNode(4)

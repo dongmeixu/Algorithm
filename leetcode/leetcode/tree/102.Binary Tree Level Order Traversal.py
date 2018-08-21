@@ -50,9 +50,11 @@ class Solution(object):
         ret = []
         if not root:
             return ret
-        queue = collections.deque([(root, 0)])
+        # queue = collections.deque([(root, 0)])
+        queue = [(root, 0)]
         while queue:
-            node, level = queue.popleft()
+            node, level = queue[0]
+            queue.pop(0)
             if len(ret) == level:
                 ret.append([])
             ret[level].append(node.val)

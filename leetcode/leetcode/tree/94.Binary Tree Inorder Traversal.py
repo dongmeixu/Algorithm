@@ -51,7 +51,6 @@ class Solution:
 3.若pNode空，弹出栈顶的结点，并访问该结点，将pNode指向其右孩子（访问最左边的结点，并遍历其右子树）
 """
 class Solution_1:
-    res = []
 
     def inorderTraversal(self, root):
         # 用于保存遍历结果的辅助空间

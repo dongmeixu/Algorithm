@@ -13,7 +13,11 @@ class Solution:
 
     def s(self, nums):
         self.s_main(nums, 0, "")
+        return self.res
 
     def s_main(self, nums, index, p):
         for i in range(len(nums)):
             self.s_main(nums, index + 1, p + nums[i])
+
+s="aab"
+print(Solution().s(s))

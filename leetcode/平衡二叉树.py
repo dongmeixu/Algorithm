@@ -5,13 +5,14 @@
 #         self.left = None
 #         self.right = None
 class Solution:
-    def __init__(self):
-        self.is_balanced = True
 
-    def IsBalanced_Solution(self, pRoot):
+    def isBalanced(self, pRoot):
         # write code here
-        self.TreeDepth(pRoot)
-        return self.is_balanced
+        if not pRoot:
+            return True
+        if abs(self.TreeDepth(pRoot.left) - self.TreeDepth(pRoot.right)) > 1:
+            return False
+        return self.isBalanced(pRoot.left) and self.isBalanced(pRoot.right)
 
     def TreeDepth(self, pRoot):
         # write code here
@@ -19,6 +20,22 @@ class Solution:
             return 0
         left = self.TreeDepth(pRoot.left)
         right = self.TreeDepth(pRoot.right)
-        if abs(left - right) > 1:
-            self.is_balanced = False
+        return max(left, right) + 1
+
+class Solution_1:
+
+    def isBalanced(self, pRoot):
+        # write code here
+        if not pRoot:
+            return True
+        return self.balanceHeight(pRoot) >= 0
+
+    def balanceHeight(self, pRoot):
+        if not pRoot:
+            return 0
+
+        left = self.balanceHeight(pRoot.left)
+        right = self.balanceHeight(pRoot.right)
+        if left < 0 or right < 0 or abs(left - right) > 1:  # 剪枝
+            return -1
         return max(left, right) + 1

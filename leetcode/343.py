@@ -43,7 +43,7 @@ class Solution:
             # 求解memo[i]
             for j in range(1, i):
                 # j + (i - j)
-                memo[i] = max(memo[i], j * (i - j), j *memo[i - j])
+                memo[i] = max(memo[i], j * (i - j), j * memo[i - j])
         return memo[n]
 
 

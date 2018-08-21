@@ -27,7 +27,7 @@ class Solution:
             if n == 0 and copy not in self.res:
                 self.res.append(copy)
             return
-        for i in range(index, n + 1 - (k - len(sum)) + 1):
+        for i in range(index, n + 1 - (k - len(sum)) + 1):  # 剪枝
             if not self.used[i - 1]:
                 sum.append(i)
                 self.used[i - 1] = True

@@ -12,6 +12,8 @@ The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
 Note: Bonus point if you are able to do this using only O(n) extra space, where n is the total number of
 rows in the triangle.
 """
+
+
 class Solution:
     min = 0
 
@@ -24,3 +26,12 @@ class Solution:
     def minimunTotal_main(self, arr, index):
         for i in range(len(arr[0])):
             self.minimunTotal_main(arr[i], index + 1)
+
+
+p = [
+    [2],
+    [3, 4],
+    [6, 5, 7],
+    [4, 1, 8, 3]
+]
+print(Solution().minimumTotal(p))

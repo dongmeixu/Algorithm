@@ -65,7 +65,7 @@ class Solution:
         for interval in intervals:
             inter.append([interval.start, interval.end])
 
-        inter.sort()
+        inter.sort(key=lambda x: x[1])
 
         res = 1
         pre = 0
@@ -76,6 +76,6 @@ class Solution:
         return len(inter) - res
 
 
-# intervals = [Interval(1, 2), Interval(1, 3), Interval(1, 2)]
-intervals = [Interval(1, 2), Interval(2, 3), Interval(3, 4), Interval(1, 3)]
+intervals = [Interval(1, 2), Interval(1, 3), Interval(1, 2)]
+# intervals = [Interval(1, 2), Interval(2, 3), Interval(3, 4), Interval(1, 3)]
 print(Solution().eraseOverlapIntervals(intervals))

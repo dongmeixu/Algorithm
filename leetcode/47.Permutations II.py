@@ -26,6 +26,7 @@ class Solution:
 
     def permute_main(self, nums, index, p):
         if index == len(nums):
+            # TODO:这块还有其他办法嘛？
             if p not in self.res:
                 self.res.append(p[:])
             return
@@ -42,5 +43,5 @@ class Solution:
                 self.used[i] = False
 
 
-nums = [1, 1, 2]
+nums = [1, 2, 1]
 print(Solution().permute(nums))

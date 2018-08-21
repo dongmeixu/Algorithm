@@ -29,7 +29,8 @@ class Solution:
 
         for i in range(len(candidates)):
             tmp.append(candidates[i])
-            self.dfs(candidates, target - candidates[i], index + 1, tmp)
+            # TODO:下次递归调用的时候：candidates只包含[i.....len(candidates) -1]的元素
+            self.dfs(candidates[i:], target - candidates[i], index + 1, tmp)
             tmp.pop()
         return
 

@@ -33,6 +33,8 @@ Output: false
 """
 # Definition for a binary tree node.
 """已通过leetcode"""
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -56,18 +58,18 @@ class TreeNode:
 #
 #         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 
-"""stack""" # 时间复杂度O(n) 空间复杂度O(nLogn)
+"""stack"""  # 时间复杂度O(n) 空间复杂度O(nLogn)
 # class Solution(object):
 #     def isSameTree(self, p, q):
-#         stack = [(p, q)]
-#         while stack:
-#             n1, n2 = stack.pop()
-#             if not n1 and not n2: continue
-#             if not n1 or not n2: return n1 == n2
-#             if n1.val != n2.val: return False
-#             stack.append((n1.right, n2.right))
-#             stack.append((n1.left, n2.left))
-#         return True
+# #         stack = [(p, q)]
+# #         while stack:
+# #             n1, n2 = stack.pop()
+# #             if not n1 and not n2: continue
+# #             if not n1 or not n2: return n1 == n2
+# #             if n1.val != n2.val: return False
+# #             stack.append((n1.right, n2.right))
+# #             stack.append((n1.left, n2.left))
+# #         return True
 
 """queue"""
 import collections
@@ -78,9 +80,12 @@ class Solution(object):
         queue = collections.deque([(p, q)])
         while queue:
             n1, n2 = queue.popleft()
-            if not n1 and not n2: continue
-            if not n1 or not n2: return n1 == n2
-            if n1.val != n2.val: return False
+            if not n1 and not n2:
+                continue
+            if not n1 or not n2:
+                return n1 == n2
+            if n1.val != n2.val:
+                return False
             queue.append((n1.left, n2.left))
             queue.append((n1.right, n2.right))
         return True
