@@ -1,4 +1,3 @@
-
 def delete(s):
     if not s:
         return
@@ -9,5 +8,6 @@ def delete(s):
 
     return ''.join(res)
 
+
 s = "google"
-delete(s)
+print(delete(s))

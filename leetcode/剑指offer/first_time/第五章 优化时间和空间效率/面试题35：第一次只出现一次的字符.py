@@ -53,4 +53,7 @@ class Solution:
 
 
 s = 'abccbooseexdad'
+s_l = list(filter(lambda x:s.count(x) == 1, s))[0]
+print(s_l)
 print(Solution().FirstNotRepeatingChar(s))
+

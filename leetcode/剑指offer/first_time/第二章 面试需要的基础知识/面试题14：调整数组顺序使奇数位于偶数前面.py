@@ -30,7 +30,6 @@ class Solution:
                 array[pOdd] = array[pEven]
                 array[pEven] = tmp
 
-        print(array)
         return array
 
     def reOrderArray_1(self, array):

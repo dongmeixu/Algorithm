@@ -40,4 +40,4 @@ p = head = ListNode(N[0])
 for temp in N[1:]:
     p.next = ListNode(temp)
     p = p.next
-Solution().FindKthToTail(head, k=0)
+Solution().FindKthToTail(head, k=5)
