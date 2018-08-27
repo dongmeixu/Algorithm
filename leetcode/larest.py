@@ -22,19 +22,14 @@ def longestPalindrome(s):
 def longestPalindrome_2(s):
     n = len(s)
     dp = [[0] * n] * n
-    start = 0
-    for i in range(n):
-        for j in range(n - 1, i + 1, -1):
-            if i == j:
-                dp[i][j] = 1
+    for i in range(n - 1, -1, -1):
+        dp[i][i] = 1
+        for j in range(i + 1, n):
             if s[i] == s[j]:
-                start = i
                 dp[i][j] = dp[i - 1][j - 1] + 2
             else:
                 dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
-                start = max(i + 1, i)
-    print(start, start + dp[-1][-1])
-    return dp[-1][-1]
+    return dp
 
 
 print(longestPalindrome("abaab"))
