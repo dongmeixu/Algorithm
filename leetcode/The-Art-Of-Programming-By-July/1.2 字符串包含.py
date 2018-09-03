@@ -46,16 +46,16 @@ class Solution:
         a.sort()
         b.sort()
 
-        pa = pb = 0
-        while pb < len_b:
-            while pa < len_a and a[pa] < b[pb]:  # 在a中找到第一个跟b首字母一样的元素
-                pa += 1
-
-            if pa >= len_a or a[pa] > b[pb]:
-                return False
-
-            # 当前位置的元素值相等，则继续比较
-            pb += 1
+        # pa = pb = 0
+        # while pb < len_b:
+        #     while pa < len_a and a[pa] < b[pb]:  # 在a中找到第一个跟b首字母一样的元素
+        #         pa += 1
+        #
+        #     if pa >= len_a or a[pa] > b[pb]:
+        #         return False
+        #
+        #     # 当前位置的元素值相等，则继续比较
+        #     pb += 1
 
         for tmp in b:
             if tmp not in a:
@@ -63,4 +63,4 @@ class Solution:
         return True
 
 
-print(Solution().StringContain_1("abcd", "acd"))
+print(Solution().StringContain_1("abcd", "acdf"))

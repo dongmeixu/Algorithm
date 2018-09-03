@@ -6,8 +6,8 @@ class ListNode:
 
 class Solution:
     def isCycle(self, head):
-        if not head:
-            return
+        if not head:   # 不存在的时候输出Null
+            return None
 
         pfast = pslow = head
         isCycle = False

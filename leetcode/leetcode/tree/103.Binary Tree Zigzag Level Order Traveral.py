@@ -90,3 +90,4 @@ p.left.right = TreeNode(4)
 print(Solution().zigzagLevelOrder(head))
 print(Solution_1().zigzagLevelOrder(head))
 
+

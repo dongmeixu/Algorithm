@@ -108,7 +108,7 @@ class Solution3:
         return tinput[:k]
 
 
-arr = [4, 5, 1, 6, 2, 7, 3, 8]
+arr = [1, 2, 4, 3]
 # arr.sort()
-print(Solution().GetLeastNumbers_Solution(arr, 4))
-print(Solution3().GetLeastNumbers_Solution(arr, 4))
+print(Solution().GetLeastNumbers_Solution(arr, 3))
+print(Solution3().GetLeastNumbers_Solution(arr, 3))

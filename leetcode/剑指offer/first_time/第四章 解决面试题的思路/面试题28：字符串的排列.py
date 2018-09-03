@@ -10,31 +10,55 @@
 
 # -*- coding:utf-8 -*-
 class Solution:
+    res = []
+    used = []
+
     def Permutation(self, ss):
         # write code here
-        ss = list(ss)
-        res = []
         if not ss:
-            return res
-        self.PermutationMain(ss, res, 0)
-        #print(res)
-        return res
+            return self.res
+        ss = list(ss)
+        self.used = [False] * len(ss)
+        self.main(ss, 0, [])
+        return self.res
 
-    def PermutationMain(self, ss, res, begin):
-        for i in range(begin, len(ss)):
-            if i != begin and ss[i] == ss[begin]:  # 遇到重复元素的情况
-                continue
-            # 交换元素
-            a = ss[begin]
-            ss[begin] = ss[i]
-            ss[i] = a
-            # tmp用于记录当前交换后的字符串
-            tmp = ''.join(ss)
-            if tmp not in res and i == len(ss) - 1:
-                res.append(tmp)
-            self.PermutationMain(ss[:], res, begin + 1)
+    # 如果有重复元素就不对了。。。
+    def main(self, s, index, p):
+        if index == len(s):
+            self.res.append("".join(p[:]))
+        for i in range(len(s)):
+            if not self.used[i]:
+                p.append(s[i])
+                self.used[i] = True
+                self.main(s, index + 1, p)
+                p.pop()
+                self.used[i] = False
 
 
-ss = "aa"
-print(len(ss))
-Solution().Permutation(ss)
+#         ss = list(ss)
+#         res = []
+#         if not ss:
+#             return res
+#         self.PermutationMain(ss, res, 0)
+#         #print(res)
+#         return res
+#
+#     def PermutationMain(self, ss, res, begin):
+#         for i in range(begin, len(ss)):
+#             if i != begin and ss[i] == ss[begin]:  # 遇到重复元素的情况
+#                 continue
+#             # 交换元素
+#             a = ss[begin]
+#             ss[begin] = ss[i]
+#             ss[i] = a
+#             # tmp用于记录当前交换后的字符串
+#             tmp = ''.join(ss)
+#             if tmp not in res and i == len(ss) - 1:
+#                 res.append(tmp)
+#             self.PermutationMain(ss[:], res, begin + 1)
+#
+#
+# ss = "aa"
+# print(len(ss))
+# Solution().Permutation(ss)
+print(Solution().Permutation("aab"))

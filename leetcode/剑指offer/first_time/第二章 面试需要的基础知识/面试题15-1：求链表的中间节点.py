@@ -19,15 +19,24 @@ class Solution:
     def midNodeOfList(self, head):
         if not head:
             return
-
-        p1 = p2 = head
-        while p2.next:
-            p1 = p1.next
-            if p2.next.next:
-                p2 = p2.next.next
-            else:
-                return p1 or p2
-        return p1
+        fast = slow = head
+        while fast:
+            fast = fast.next if fast.next else None
+            if not fast:
+                break
+            fast = fast.next if fast.next else None
+            if not fast:
+                break
+            slow = slow.next
+        return slow
+        # p1 = p2 = head
+        # while p2.next:
+        #     p1 = p1.next
+        #     if p2.next.next:
+        #         p2 = p2.next.next
+        #     else:
+        #         return p1 or p2
+        # return p1
 
 
 N = list(map(int, input().split()))
