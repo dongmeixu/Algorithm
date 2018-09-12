@@ -1,22 +1,28 @@
-
+# -*- coding:utf-8 -*-
 class Solution:
     # 技巧 4个方向
     direction = [[-1, 0], [0, 1], [1, 0], [0, -1]]
     visited = []
 
-    def exist(self, board, word):
+    def hasPath(self, matrix, rows, cols, path):
         """
             :type board: List[List[str]]
             :type word: str
             :rtype: bool
             """
-        m = len(board)
-        n = len(board[0])
-        self.visited = [[False for _ in range(n)] for _ in range(m)]
-        # 遍历二维数组，在每次都尝试从i，j出发
+        m = rows
+        n = cols
+
+        board = [["" for _ in range(n)] for _ in range(m)]
         for i in range(m):
             for j in range(n):
-                if self.search_word(board, word, 0, i, j):
+                board[i][j] = matrix[n * i + j]
+
+        self.visited = [[False for _ in range(n)] for _ in range(m)]
+
+        for i in range(m):
+            for j in range(n):
+                if self.search_word(board, path, 0, i, j):
                     return True
         return False
 
@@ -25,7 +31,6 @@ class Solution:
         n = len(board[0])
         return 0 <= x < m and 0 <= y < n
 
-    # 从board[startX][startY]开始，寻找word[index......word.size()]
     def search_word(self, board, word, index, startX, startY):
         # 递归截止条件
         if index == len(word) - 1:
@@ -46,20 +51,20 @@ class Solution:
         return False
 
 
-board = [
-    ['A', 'B', 'C', 'E'],
-    ['S', 'F', 'C', 'S'],
-    ['A', 'D', 'E', 'E']
-]
-
+# board = [
+#     ['A', 'B', 'C', 'E'],
+#     ['S', 'F', 'C', 'S'],
+#     ['A', 'D', 'E', 'E']
+# ]
+board = "ABCESFCSADEE"
 word = "ABCB"
-print(Solution().exist(board, word))
+print(Solution().hasPath(board, 3, 4, word))
 
 word = "ABCCED"
-print(Solution().exist(board, word))
+print(Solution().hasPath(board, 3, 4, word))
 
 word = "SEE"
-print(Solution().exist(board, word))
+print(Solution().hasPath(board, 3, 4,  word))
 
 word = "BCCED"
-print(Solution().exist(board, word))
+print(Solution().hasPath(board, 3, 4,  word))

@@ -52,4 +52,4 @@ class Solution:
             self.Combination_main(s[1:], m, res)
 
 
-print(Solution().Combination([6, 2, 1]))
+print(Solution().Combination([1, 2, 3]))

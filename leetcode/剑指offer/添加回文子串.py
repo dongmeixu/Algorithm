@@ -1,66 +1,29 @@
 """
-Longest Palindromic Substring Part II
-– LeetCode https://articles.leetcode.com/longest-palindromic-substring-part-ii/
+对于一个字符串，我们想通过添加字符的方式使得新的字符串整体变成回文串，但是只能在原串的结尾添加字符，请返回在结尾添加的最短字符串。
 
+给定原字符串A及它的长度n，请返回添加的字符串。保证原串不是回文串。
 
+测试样例：
+"ab",2
+返回："a"
 """
 
-
-# class Solution:
-#     def longestPalindrome(self, s):
-#         if not s:
-#             return None
-#
-#         # 对这个字符串做特殊处理
-#         T = self.preProcess(s)
-#         print(T)
-#
-#         n = len(T)
-#         p = [0] * (2 * n - 1)
-#
-#         C = 0
-#         R = 0
-#         for i in range(n - 1):
-#             i_mirror = 2 * C - 1
-#             p[i] = min(R - i, p[i_mirror]) if R > i else 0
-#
-#             # attempt to expand palindrome centered at i
-#             while T[i + 1 + p[i]] == T[i - 1 - p[i]]:
-#                 p[i] += 1
-#
-#             if i + p[i] > R:
-#                 C = i
-#                 R = i + p[i]
-#
-#         # find the max element in p
-#         maxLen = 0
-#         centerIndex = 0
-#         for i in range(1, n - 1):
-#             if p[i] > maxLen:
-#                 maxLen = p[i]
-#                 centerIndex = i
-#         del p
-#
-#         return s[(centerIndex - 1 - maxLen) >> 2: maxLen]
-#
-#     def preProcess(self, s):
-#         n = len(s)
-#
-#         if n == 0:
-#             return "^$"
-#
-#         ret = "^"
-#         for tmp in s:
-#             ret += "#" + tmp
-#
-#         ret += "#$"
-#         return ret
-#
 
 # -*- coding:utf-8 -*-
 
 class Palindrome:
-    def getLongestPalindrome(self, A, n):
+    def pre_process(self, s):
+        if not s:
+            return "#"
+
+        res = "#"
+        for tmp in s:
+            res += tmp
+            res += "#"
+
+        return res
+
+    def addToPalindrome(self, A, n):
         # write code here
         if len(A) != n:
             return 0
@@ -97,7 +60,6 @@ class Palindrome:
         orig_len = long_len >> 1
 
         ss = orig_index + orig_len - 1
-        print(ss)
         # print(orig_index, orig_len)
         # print(A[orig_index - orig_len + 1: orig_index + orig_len])
         if ss == 0:
@@ -117,24 +79,4 @@ class Palindrome:
 
             A_res = list(A[:j + 1])
         A_res.reverse()
-        return long_len - 1, A[orig_index - orig_len:], "".join(A_res)
-
-    def pre_process(self, s):
-        if not s:
-            return "#"
-
-        res = "#"
-        for tmp in s:
-            res += tmp
-            res += "#"
-
-        return res
-
-
-print(Palindrome().getLongestPalindrome("abbbbbaa", 8))
-print(Palindrome().getLongestPalindrome("ab", 2))
-print(Palindrome().getLongestPalindrome("bbabbaaabba", 11))
-
-# 问题分解
-# 1、找到最长的回文子串
-# 2、剩余部分就是需要添加的子串
+        return "".join(A_res)

@@ -45,4 +45,4 @@ class Solution:
         return
 
 
-print(Solution().quanpailie("abcdefghigklmnopqrstuvwxyz"))
+print(Solution().quanpailie("123"))
