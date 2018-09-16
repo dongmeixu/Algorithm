@@ -86,7 +86,41 @@ class Solution:
         return ''.join(newStringList)
 
 
-s = "we are happy."
+s = "sArcCNxjNaviToUsSN QiTtx j bgUhhIoiSfszja QfFkxk JwYOoFSg dhdMKgTxjRrcATfkb ELqIebLGZk kAESkrNJxbmci nyojZqX vawG kxvqf moWAA m aMuilydRRNvVuh Uss mJtnZb zA oF cx hUQD V dSLSLcbjXLydl V dReEozdi ZO IxbW CgcTeobRrmco ELs cQh K xlg Pj cGaO yXKXy hs kmJaSdNV Z InShcp AxoM hHLTsIMhcHKnArxgRVjh MclqtzFpl yzaWlhLfYlfxNFgb"
 print(Solution().replaceSpace_1(s))
 
 
+# -*- coding:utf-8 -*-
+class Zipper:
+    def zipString(self, iniString):
+        # write code here
+        if not iniString:
+            return ""
+
+        hash_map = {}
+
+        # 统计所有字符出现的次数
+        for tmp in iniString:
+            hash_map[tmp] = hash_map.get(tmp, 0) + 1
+
+        res = [iniString[0], str(hash_map[iniString[0]])]
+        for i in range(1, len(iniString)):
+            if iniString[i] not in res:  # 存在
+                if iniString[i - 1] == iniString[i]:
+                    res.append(iniString[i])
+                else:
+                    res.append(iniString[i])
+                    res.append(str(hash_map[iniString[i]]))
+
+        yasuo = "".join(res)
+        if len(yasuo) >= len(iniString):
+            return iniString
+        else:
+            return yasuo
+
+
+s = "aabcccccaaa"
+print(Zipper().zipString(s))
+
+s = "welcometonowcoderrrrr"
+print(Zipper().zipString(s))

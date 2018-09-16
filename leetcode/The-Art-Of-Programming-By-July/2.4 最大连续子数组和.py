@@ -17,3 +17,15 @@ class Solution:
 
 
 print(Solution().MaxSubArray([1, -2, 3, 10, -4, 7, 2, -5]))
+
+
+# f(i,j) = f(i - 1, j - 1)  str1[i] ！=str2[j]
+#        = 1 + f(i - 1, j - 1)
+
+x = input()
+y = input()
+
+len_x = len(x)
+len_y = len(y)
+
+
