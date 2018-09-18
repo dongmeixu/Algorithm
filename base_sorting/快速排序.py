@@ -40,3 +40,8 @@ def quick_sort(L, start, end):
 
             quick_sort(L, start, i - 1)
             quick_sort(L, i + 1, end)
+        return L
+
+
+L = [3, 12, 5, 7, 3, 2]
+print(quick_sort(L, 0, len(L) - 1))

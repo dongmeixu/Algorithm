@@ -61,4 +61,52 @@ class Solution:
 # ss = "aa"
 # print(len(ss))
 # Solution().Permutation(ss)
-print(Solution().Permutation("aab"))
+print(Solution().Permutation("aba"))
+
+import queue
+
+
+class Solution:
+    def Permutation(self, s):
+        s_list = list(s)
+        s_len = len(s_list)
+        q1 = queue.Queue()
+        q2 = queue.Queue()
+        q1.put(s_list)
+
+        for i in range(s_len - 1):
+            if q1.empty():
+                while not q2.empty():
+                    s_list = q2.get()
+                    q1.put(s_list)
+                    c1 = s_list[i]
+                    for j in range(i + 1, s_len):
+                        c2 = s_list[j]
+                        if c2 != c1:
+                            temp = s_list[:]
+                            temp[i] = c2
+                            temp[j] = c1
+                            q1.put(temp)
+            else:
+                while not q1.empty():
+                    s_list = q1.get()
+                    q2.put(s_list)
+                    c1 = s_list[i]
+                    for j in range(i + 1, s_len):
+                        c2 = s_list[j]
+                        if c2 != c1:
+                            temp = s_list[:]
+                            temp[i] = c2
+                            temp[j] = c1
+                            q2.put(temp)
+        res = []
+        if q1.empty():
+            while not q2.empty():
+                res.append(q2.get())
+        else:
+            while not q1.empty():
+                res.append(q1.get())
+        return res
+
+
+print(Solution().Permutation("aba"))
