@@ -48,12 +48,16 @@ class Solution:
             self.ConvertNode(pCurrent.right)
 
 
-p = root = TreeNode(8)
-p.left = TreeNode(6)
-p.right = TreeNode(10)
-p.left.left = TreeNode(5)
-p.left.right = TreeNode(7)
-p.right.left = TreeNode(9)
-p.right.right = TreeNode(11)
+# p = root = TreeNode(8)
+# p.left = TreeNode(6)
+# p.right = TreeNode(10)
+# p.left.left = TreeNode(5)
+# p.left.right = TreeNode(7)
+# p.right.left = TreeNode(9)
+# p.right.right = TreeNode(11)
+#
+# print(Solution().Convert(root).val)
 
-print(Solution().Convert(root).val)
+
+
+

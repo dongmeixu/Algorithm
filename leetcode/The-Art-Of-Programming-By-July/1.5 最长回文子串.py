@@ -138,3 +138,20 @@ print(Palindrome().getLongestPalindrome("bbabbaaabba", 11))
 # 问题分解
 # 1、找到最长的回文子串
 # 2、剩余部分就是需要添加的子串
+
+
+nums = list(map(int, input().split()))
+nums_len = len(nums)
+max_val = [nums[-1]] * nums_len
+min_val = [nums[0]] * nums_len
+for i in range(nums_len - 2, -1, -1):
+    max_val[i] = max(max_val[i + 1], nums[i])
+for j in range(1, nums_len):
+    min_val[j] = min(min_val[j - 1], nums[j])
+max_differ = max_val[1] - min_val[0]
+for i in range(2, nums_len):
+    max_differ = max(max_val[i] - min_val[i], max_differ)
+print(max_differ)
+
+
+

@@ -21,3 +21,5 @@ class Solution:
 
 
 print(Solution().Sum_Solution(5))
+
+

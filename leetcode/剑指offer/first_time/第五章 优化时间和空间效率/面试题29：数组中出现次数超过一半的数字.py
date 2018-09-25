@@ -124,33 +124,35 @@ class Solution:
         n = len(numbers)
         if not n:
             return 0
-        index = self.partition(numbers, 0, n - 1)
+
+        if n == 1:
+            return numbers[0]
 
         start = 0
         end = n - 1
-        target_index = n // 2
-        while index != target_index:
-            if index > target_index:
-                index = self.partition(numbers, start, target_index - 1)
-            else:
-                index = self.partition(numbers, target_index + 1, end)
+        index = self.partition(numbers, start, end)
 
+        target_index = start + (end - start) // 2
+        while index != (target_index - 1):
+            if index > target_index:
+                index = self.partition(numbers, start, index - 1)
+            else:
+                index = self.partition(numbers, index + 1, end)
         if self.CheckMoreThanHalf(numbers, numbers[index]):
             return numbers[index]
         else:
             return 0
 
     def partition(self, numbers, start, end):
-        if not numbers or start < 0 or end > len(numbers):
-            return 0
-        pivot = numbers[start + (end - start) // 2]
+
+        pivot = numbers[start]
 
         while start < end:
-            while start < end and numbers[end] > pivot:
+            while start < end and numbers[end] >= pivot:
                 end -= 1
             numbers[start] = numbers[end]
 
-            while start < end and numbers[start] < pivot:
+            while start < end and numbers[start] <= pivot:
                 start += 1
             numbers[end] = numbers[start]
 
@@ -161,14 +163,16 @@ class Solution:
         if not numbers:
             return False
 
+        n = len(numbers)
+
         count = 0
         for tmp in numbers:
             if tmp == target:
                 count += 1
-        if count > len(numbers) // 2:
-            return True
+        if n & 1 == 1:  # 奇数
+            return count >= n // 2 + 1
         else:
-            return False
+            return count > n // 2
 
 
 class Solution1:
@@ -204,12 +208,16 @@ class Solution1:
         for tmp in numbers:
             if tmp == target:
                 count += 1
-        if n & 1 == 1: # 奇数
-            return count >= n // 2
+        if n & 1 == 1:  # 奇数
+            return count >= n // 2 + 1
         else:
             return count > n // 2
 
 
 # arr = [4, 2, 4, 1, 4, 2]
-arr = [1, 2, 2, 2]
+# arr = [1, 2, 2, 2]
+# arr = [1, 2, 3, 2, 4, 2, 5, 2, 3]
+# arr = [1, 3, 4, 5, 2, 2, 2, 2, 2]
+arr = [1]
+print(Solution().MoreThanHalfNum_Solution(arr))
 print(Solution1().MoreThanHalfNum_Solution(arr))
