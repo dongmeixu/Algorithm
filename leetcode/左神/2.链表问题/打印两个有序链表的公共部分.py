@@ -34,22 +34,41 @@ class CommonPart:
                 p1 = p1.next
         return res
 
+#
+# list1 = list(map(int, input().split()))
+# list2 = list(map(int, input().split()))
+#
+# phead1 = ListNode(list1[0])
+# p = phead1
+# for x in list1[1:]:
+#     temp = ListNode(x)
+#     p.next = temp
+#     p = p.next
+#
+# phead2 = ListNode(list2[0])
+# p = phead2
+# for x in list2[1:]:
+#     temp = ListNode(x)
+#     p.next = temp
+#     p = p.next
+#
+# print(CommonPart().getCommon(phead1, phead2))
 
-list1 = list(map(int, input().split()))
-list2 = list(map(int, input().split()))
 
-phead1 = ListNode(list1[0])
-p = phead1
-for x in list1[1:]:
-    temp = ListNode(x)
-    p.next = temp
-    p = p.next
-
-phead2 = ListNode(list2[0])
-p = phead2
-for x in list2[1:]:
-    temp = ListNode(x)
-    p.next = temp
-    p = p.next
-
-print(CommonPart().getCommon(phead1, phead2))
+data = input().split("\n")
+selected_thread = data[0]
+logs = data[1:]
+selected_log = []
+log_split = logs
+is_slected = False
+for log in log_split:
+    if "\t" in log:
+        if log.split("\t")[1] == selected_thread:
+            selected_log.append(log)
+            is_slected = True
+        else:
+            is_slected = False
+    else:
+        if is_slected:
+            selected_log.append(log)
+print("\n".join(selected_log))
